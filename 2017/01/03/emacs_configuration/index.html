@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/~chaoliu/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/~chaoliu/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/~chaoliu/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/~chaoliu/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/~chaoliu/css/main.css">
+
+
+<link rel="stylesheet" href="/~chaoliu/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.seas.upenn.edu","root":"/~chaoliu/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction   Emacs is an extensible, customizable, free&#x2F;libre text editor. 1 For more information, check Gnu Emacs.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emacs Configuration">
+<meta property="og:url" content="http://www.seas.upenn.edu/~chaoliu/2017/01/03/emacs_configuration/index.html">
+<meta property="og:site_name" content="Chao&#39;s Blog">
+<meta property="og:description" content="Introduction   Emacs is an extensible, customizable, free&#x2F;libre text editor. 1 For more information, check Gnu Emacs.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-01-03T05:00:00.000Z">
+<meta property="article:modified_time" content="2018-09-22T04:00:00.000Z">
+<meta property="article:author" content="Chao Liu">
+<meta property="article:tag" content="Emacs">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://www.seas.upenn.edu/~chaoliu/2017/01/03/emacs_configuration/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Emacs Configuration | Chao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/~chaoliu/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Chao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/~chaoliu/." rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/~chaoliu/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/~chaoliu/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/~chaoliu/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/~chaoliu/404.html" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/wuliuxiansheng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.seas.upenn.edu/~chaoliu/2017/01/03/emacs_configuration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/~chaoliu/images/avatars/on_the_way.jpg">
+      <meta itemprop="name" content="Chao Liu">
+      <meta itemprop="description" content="Be always on the way.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Emacs Configuration
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-01-03 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-03T00:00:00-05:00">2017-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-09-22 00:00:00" itemprop="dateModified" datetime="2018-09-22T00:00:00-04:00">2018-09-22</time>
+              </span>
+
+          
+            <span id="/~chaoliu/2017/01/03/emacs_configuration/" class="post-meta-item leancloud_visitors" data-flag-title="Emacs Configuration" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/~chaoliu/2017/01/03/emacs_configuration/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/03/emacs_configuration/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div id="content">
+
+<div id="outline-container-org78e2bd9" class="outline-2">
+<h2 id="org78e2bd9">Introduction</h2>
+<div class="outline-text-2" id="text-org78e2bd9">
+<p>
+<b>Emacs</b> is an extensible, customizable, free/libre text editor. <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> For more information, check <a href="https:www.gnu.org/software/emacs/" target="_blank" rel="noopener">Gnu Emacs</a>.
+</p>
+
+<a id="more"></a>
+
+<p>
+For Emacs beginners, it&apos;s hard to have a suitable Emacs configuration. There are some good popular kits which are helpful for people to use, such as <code>emacs24-starter-kit</code>, <code>emacs prelude</code> and <code>Steven Purcell&apos;s emacs.d</code>. This is the note of my configuration and it should be updated frequently.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc264aed" class="outline-2">
+<h2 id="orgc264aed">Why Emacs</h2>
+<div class="outline-text-2" id="text-orgc264aed">
+<p>
+Why do I want to use Emacs? Because it&apos;s fast and efficient. There are tons of pages introducing how useful Emacs can be. In terms of my use of Emacs, it can give you a relatively integral experiences dealing with most of tasks you are facing efficiently.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb200d32" class="outline-2">
+<h2 id="orgb200d32">Emacs Configuration</h2>
+<div class="outline-text-2" id="text-orgb200d32">
+<p>
+My <a href="https://github.com/wuliuxiansheng/Emacs_Configuration" target="_blank" rel="noopener">Emacs Configuration</a> is based on Steven Purcell&apos;s emacs.d <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> project whose framework is clean and clear. Purcell is a web developer so most of his configurations are for web development. I am a robotics guy and I am more interested in different topics. I work on programming a lot with C/C++, Python and MATLAB and also write papers using LaTeX. GitHub and SVN are extremely useful for my development. Plus, email is necessary for everyone. This Emacs configuration is helpful for these things plus some other useful tools which are capable of making your workflow more efficient.
+</p>
+
+<p>
+There are three different installation modes: <i>full</i>, <i>text</i> and <i>programming</i>. The default installation mode is <i>full</i>. When selecting <i>text</i>, corresponding configurations and packages about Python, C/C++, MATLAB, ROS, HTML and XML won&apos;t be loaded. When selecting <i>programming</i>, corresponding configurations and packages about Markdown, TeX, Email and Blog won&apos;t be loaded. Make an option before starting.
+</p>
+</div>
+
+<div id="outline-container-orge2c33b3" class="outline-3">
+<h3 id="orge2c33b3">Programming</h3>
+<div class="outline-text-3" id="text-orge2c33b3">
+</div>
+<div id="outline-container-orgaed257f" class="outline-4">
+<h4 id="orgaed257f">C/C++</h4>
+<div class="outline-text-4" id="text-orgaed257f">
+<ul class="org-ul">
+<li>K&amp;R indent style for C/C++ programming;</li>
+<li>Three key-bindings for embedded programming with microcontroller:
+<ol class="org-ol">
+<li><code>C-x C m</code>: <i>make</i>;</li>
+<li><code>C-x C f</code>: <i>make flash</i>;</li>
+<li><code>C-x C c</code>: <i>make clean</i>.</li>
+</ol></li>
+<li>CEDET Configuration
+<ol class="org-ol">
+<li><b>Semantic</b> with <b>company-semantic</b> is configured for C/C++ programming. See <a href="http://cedet.sourceforge.net/semantic.shtml" target="_blank" rel="noopener">Semantic</a> in CEDET, for details;</li>
+<li><b>EDE</b> mode is enabled for C/C++ project and project local variables can be stored in <code>.emacs.d/cc-mode-projects.el</code>;</li>
+<li><b>company-c-headers</b> is configured to enable the completion of C/C++ header file names using Company mode for Emacs and <code>.emacs.d/cc-mode-header-custom.el</code> can be used to customize the include paths.</li>
+</ol></li>
+<li><p>
+RTags Configuration
+</p>
+<ol class="org-ol">
+<li><b>RTags</b> is configured for C/C++ code navigation. See <a href="http://www.rtags.net" target="_blank" rel="noopener">RTags</a> for details;</li>
+</ol>
+
+<ol class="org-ol">
+<li><b>company-rtags</b> is configured for code completion using Company mode;</li>
+<li><b>flycheck-irony</b> package is configured to work with <b>Flycheck</b> for syntax checking.</li>
+</ol></li>
+<li><b>cmake-mode</b>, as well as <b>company-cmake</b>, are configured for editing CMake source files.</li>
+<li><b>clang-format</b> is configured to automatically format C/C++ code.</li>
+</ul>
+<p>
+Detailed configuration introduction can be found in <a href="http://www.seas.upenn.edu/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/">this post</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf0ca992" class="outline-4">
+<h4 id="orgf0ca992">Python</h4>
+<div class="outline-text-4" id="text-orgf0ca992">
+<ul class="org-ul">
+<li><b>Jedi</b> is configured for Python programming and <code>.emacs.d/jedi-custom.el</code> can be used to customize Jedi, like adding some special <b>sys.path</b> when starting Jedi server. See <a href="http://tkf.github.io/emacs-jedi/latest/" target="_blank" rel="noopener">Documentation</a> of Jedi, for details;</li>
+<li><b>IPython</b> is used as Python shell interpreter. See <a href="https://ipython.org" target="_blank" rel="noopener">IPython</a> for details;</li>
+<li><b>autopep8</b> is required for automatically formatting Python code to conform to the <i>PEP 8</i> style guide. See <a href="https://pypi.python.org/pypi/autopep8" target="_blank" rel="noopener">autopep8</a> package for details.</li>
+</ul>
+<p>
+Detailed configuration introduction can be found in <a href="http://www.seas.upenn.edu/~chaoliu/2017/09/01/python-programming-in-emacs/">this post</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orga9c14a4" class="outline-4">
+<h4 id="orga9c14a4">MATLAB</h4>
+<div class="outline-text-4" id="text-orga9c14a4">
+<p>
+<b>matlab mode</b> package is configured for editing .m-files and launching MATLAB shell.
+</p>
+</div>
+</div>
+<div id="outline-container-org7773f4d" class="outline-4">
+<h4 id="org7773f4d">ROS (Robot Operating System)</h4>
+<div class="outline-text-4" id="text-org7773f4d">
+<ul class="org-ul">
+<li><b>rosemacs</b> is configured for ROS users;</li>
+<li><b>yaml-mode</b>, <b>nxml-mode</b> and <b>cmake-mode</b> are configured for editing YAML files, XML files and <code>CMakeLists.txt</code> respectively.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org911cac5" class="outline-4">
+<h4 id="org911cac5">Arduino</h4>
+<div class="outline-text-4" id="text-org911cac5">
+<ul class="org-ul">
+<li><b>arduino-mode</b> is configured for programming Arduino boards;</li>
+<li><b>Irony-Mode</b> with <b>company-irony</b> is configured for code completion using Company mode. See <a href="https://github.com/Sarcasm/irony-mode" target="_blank" rel="noopener">Irony-Mode</a> for details;</li>
+<li><b>company-c-headers</b> is configured for header file completion.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf9c690f" class="outline-3">
+<h3 id="orgf9c690f">Writing</h3>
+<div class="outline-text-3" id="text-orgf9c690f">
+</div>
+<div id="outline-container-org024ce77" class="outline-4">
+<h4 id="org024ce77">Org mode</h4>
+<div class="outline-text-4" id="text-org024ce77">
+<p>
+Org mode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system. <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup> Most of my Org mode configurations are from Purcell. Furthermore, I added these following settings:
+</p>
+<ul class="org-ul">
+<li>MobileOrg is configured to synchronize the contents on a mobile platform with those stored in Dropbox on a computer. Directories can be customized by setting some variables in <code>init-org.el</code>;</li>
+<li><b>org-bullets</b> is used for Org mode in Emacs to show org-mode bullets as UTF-8 characters;</li>
+<li>Size of heading fonts is customized for better view;</li>
+<li><b>CDLaTex</b> is used for editing math part.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf2964f7" class="outline-4">
+<h4 id="orgf2964f7">TeX</h4>
+<div class="outline-text-4" id="text-orgf2964f7">
+<ul class="org-ul">
+<li><b>AUCTeX</b> is configured for writing and formatting TeX files in Emacs. See <a href="https://www.gnu.org/software/auctex/" target="_blank" rel="noopener">homepage</a> of AUCTeX for details.
+<ul class="org-ul">
+<li><b>XeLaTeX</b> is configured to be the default TeX engine. After compiling the source files, a synctex.gz file will be generated for forward and inverse search;</li>
+<li><a href="http://skim-app.sourceforge.net" target="_blank" rel="noopener">Skim</a> is required for Mac users, <a href="https://okular.kde.org" target="_blank" rel="noopener">Okular</a> is required for Ubuntu users and <a href="https://www.sumatrapdfreader.org/free-pdf-reader.html" target="_blank" rel="noopener">Sumatra PDF</a> is required for Windows users to view generated PDF files.</li>
+</ul></li>
+<li><b>company-math</b> is configured for math unicode symbols and latex tags completion. See <a href="https://github.com/vspinu/company-math/blob/master/readme.md" target="_blank" rel="noopener">README</a> in company-math for details;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org344cdf1" class="outline-4">
+<h4 id="org344cdf1">Markdown</h4>
+<div class="outline-text-4" id="text-org344cdf1">
+<p>
+<b>markdown-mode</b> is configured to support Markdown in Emacs. See <a href="https://github.com/defunkt/markdown-mode/blob/master/README.md" target="_blank" rel="noopener">README</a> in markdown-mode, for details.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdf26193" class="outline-4">
+<h4 id="orgdf26193">Notes Management</h4>
+<div class="outline-text-4" id="text-orgdf26193">
+<p>
+<b>Deft</b> is configured to manage my notes in Emacs. See <a href="https://github.com/jrblevin/deft/blob/master/README.md" target="_blank" rel="noopener">README</a> in Deft for details.
+</p>
+<ul class="org-ul">
+<li>Notes directory can be customized by setting <i>deft-directory</i> in <code>init-deft.el</code>;</li>
+<li><code>C-x N</code>: launch Deft;</li>
+<li><code>C-c n</code>: use Deft to find notes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4abcae2" class="outline-4">
+<h4 id="org4abcae2">Blog</h4>
+<div class="outline-text-4" id="text-org4abcae2">
+<p>
+<b>blog-admin</b> is configured to write blogs in Emacs with <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> framework. See <a href="https://github.com/CodeFalling/blog-admin/blob/master/README.org" target="_blank" rel="noopener">README</a> in blog-admin for details.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org831daf2" class="outline-3">
+<h3 id="org831daf2">Version Control</h3>
+<div class="outline-text-3" id="text-org831daf2">
+</div>
+<div id="outline-container-org78e2f16" class="outline-4">
+<h4 id="org78e2f16">Git</h4>
+<div class="outline-text-4" id="text-org78e2f16">
+<ul class="org-ul">
+<li><b>git-blamed</b>, <b>git-messenger</b> and <b>git-timemachine</b> are useful tools for using Git in Emacs;</li>
+<li><b>Magit</b> is a very power interface to Git in Emacs. See <a href="https://magit.vc" target="_blank" rel="noopener">Magit homepage</a> for details;</li>
+<li><b>gist</b>, <b>github-browse-file</b>, <b>github-clone</b> and some other packages are installed for GitHub in Emacs;</li>
+<li><code>C-x v p</code>: use <i>git-messenger</i> to pop up messages;</li>
+<li><code>C-x g</code>: invoke Magit.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5c04c2f" class="outline-4">
+<h4 id="org5c04c2f">SVN</h4>
+<div class="outline-text-4" id="text-org5c04c2f">
+<p>
+Emacs has built-in version control interface which is pretty nice for SVN. <b>psvn</b> is also installed for using SVN in Emacs. <b>git-svn</b> is recommended for SVN users (see <a href="https:git-scm.com/docs/git-svn" target="_blank" rel="noopener">git-svn</a>, for more details).
+</p>
+<ul class="org-ul">
+<li><code>C-x v d</code>: vc-directory &#x2013; show all files which are not up to date.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge453d8e" class="outline-3">
+<h3 id="orge453d8e">Email</h3>
+<div class="outline-text-3" id="text-orge453d8e">
+<p>
+Gnus is configured to be an email client in Emacs. Most of my configurations are from Chen Bin. See <a href="https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/gnus-guide-en.org" target="_blank" rel="noopener">this article</a> for details. In addition, I configured <b>BBDB</b> for its new version with <b>company mode</b> for address completion.
+</p>
+</div>
+</div>
+<div id="outline-container-org5b5736e" class="outline-3">
+<h3 id="org5b5736e">Tools</h3>
+<div class="outline-text-3" id="text-org5b5736e">
+<ul class="org-ul">
+<li><b>company-mode</b> is configured for completion. See <a href="http://company-mode.github.io" target="_blank" rel="noopener">homepage</a> of company-mode for details;</li>
+<li><b>dired+</b> and <b>dired-sort</b> are configured to enhance Emacs directory editor;</li>
+<li><b>iedit</b> is configured to edit multiple regions simultaneously in a buffer or a region. Use <code>C-c ;</code> to invoke iedit-mode;</li>
+<li><b>fill-column-indicator</b> is configured to graphically indicates the fill column;</li>
+<li><b>Flycheck</b> is configured to do syntax checking for Emacs. See <a href="http://www.flycheck.org/en/latest/" target="_blank" rel="noopener">homepage</a> of Flycheck for details;</li>
+<li><b>Flyspell</b> is configured to do spell checking in Emacs. See <a href="http://www-sop.inria.fr/members/Manuel.Serrano/flyspell/flyspell.html" target="_blank" rel="noopener">homepage</a> of Flyspell for details. Use <code>M-c</code> to correct spelling of the word at a point or a region;</li>
+<li>Default font settings can be found in <code>init-fonts.el</code>. The sizes of fonts for different operating systems are set differently to ensure the table with Chinese characters in Org mode can be aligned well;</li>
+<li>Use <code>C-x C-b</code> to invoke ibuffer;</li>
+<li><b>Ivy</b>, <b>Counsel</b> and <b>Swiper</b> are configured. See <a href="https://github.com/abo-abo/swiper/blob/master/README.md" target="_blank" rel="noopener">README</a> in swiper, for details;</li>
+<li><b>BBDB</b> is used to manage address book for email and <b>gmail2bbdb</b> is installed to import name and email from Gmail contacts into BBDB file;</li>
+<li><b>MultiTerm</b> is configured to be the interface to the terminal. See <a href="https://www.emacswiki.org/emacs/MultiTerm" target="_blank" rel="noopener">Multi Term</a> on Emacs Wiki, for details. Use <code>C-x M</code> to invoke multi-term;</li>
+<li><b>Projectile</b> is configured to manage projects in Emacs. See <a href="https://github.com/bbatsov/projectile/blob/master/README.md" target="_blank" rel="noopener">README</a> in Projectile, for details. Hit <code>C-c p</code> and wait for a little bit, user can get a menu of Projectile.</li>
+<li><b>Smex</b> is configured to enhance <code>M-x</code> for Emacs;</li>
+<li><b>Tramp mode</b> is configured for ssh;</li>
+<li><b>whitespace-cleanup-mode</b> is installed and whitespace is showed by default;</li>
+<li><b>YASnippet</b> is configured to be a template system for Emacs. Use <code>C-c k</code> to expand using YASnippet.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Gnu Emacs, <a href="https:www.gnu.org/software/emacs/" target="_blank" rel="noopener">https:www.gnu.org/software/emacs/</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Purcell&apos;s emacs.d, <a href="https://github.com/purcell/emacs.d" target="_blank" rel="noopener">https://github.com/purcell/emacs.d</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+Org mode, <a href="http://orgmode.org" target="_blank" rel="noopener">http://orgmode.org</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/~chaoliu/tags/Emacs/" rel="tag"># Emacs</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/~chaoliu/2016/07/03/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/~chaoliu/2017/03/07/git-svn_and_emacs_interface/" rel="next" title="git-svn and Emacs Interface">
+      git-svn and Emacs Interface <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org78e2bd9"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgc264aed"><span class="nav-number">2.</span> <span class="nav-text">Why Emacs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgb200d32"><span class="nav-number">3.</span> <span class="nav-text">Emacs Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orge2c33b3"><span class="nav-number">3.1.</span> <span class="nav-text">Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orgaed257f"><span class="nav-number">3.1.1.</span> <span class="nav-text">C&#x2F;C++</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgf0ca992"><span class="nav-number">3.1.2.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orga9c14a4"><span class="nav-number">3.1.3.</span> <span class="nav-text">MATLAB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org7773f4d"><span class="nav-number">3.1.4.</span> <span class="nav-text">ROS (Robot Operating System)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org911cac5"><span class="nav-number">3.1.5.</span> <span class="nav-text">Arduino</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgf9c690f"><span class="nav-number">3.2.</span> <span class="nav-text">Writing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org024ce77"><span class="nav-number">3.2.1.</span> <span class="nav-text">Org mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgf2964f7"><span class="nav-number">3.2.2.</span> <span class="nav-text">TeX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org344cdf1"><span class="nav-number">3.2.3.</span> <span class="nav-text">Markdown</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgdf26193"><span class="nav-number">3.2.4.</span> <span class="nav-text">Notes Management</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org4abcae2"><span class="nav-number">3.2.5.</span> <span class="nav-text">Blog</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org831daf2"><span class="nav-number">3.3.</span> <span class="nav-text">Version Control</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org78e2f16"><span class="nav-number">3.3.1.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org5c04c2f"><span class="nav-number">3.3.2.</span> <span class="nav-text">SVN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orge453d8e"><span class="nav-number">3.4.</span> <span class="nav-text">Email</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org5b5736e"><span class="nav-number">3.5.</span> <span class="nav-text">Tools</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#footnotes"><span class="nav-number">4.</span> <span class="nav-text">Footnotes: </span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chao Liu"
+      src="/~chaoliu/images/avatars/on_the_way.jpg">
+  <p class="site-author-name" itemprop="name">Chao Liu</p>
+  <div class="site-description" itemprop="description">Be always on the way.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/~chaoliu/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/~chaoliu/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wuliuxiansheng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wuliuxiansheng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chaoliu@seas.upenn.edu" title="E-Mail → mailto:chaoliu@seas.upenn.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://modlabupenn.org/" title="http:&#x2F;&#x2F;modlabupenn.org" rel="noopener" target="_blank">ModLab</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.grasp.upenn.edu/" title="https:&#x2F;&#x2F;www.grasp.upenn.edu" rel="noopener" target="_blank">GRASP Lab</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.upenn.edu/" title="http:&#x2F;&#x2F;www.upenn.edu" rel="noopener" target="_blank">University of Pennsylvania</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.djtu.edu.cn/" title="http:&#x2F;&#x2F;www.djtu.edu.cn" rel="noopener" target="_blank">Dalian Jiaotong University</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chao Liu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"M06L4PGErlXNY7V8UDbRTTHE-gzGzoHsz","app_key":"vWioykLNdFcAAkYIFpEDgd1N","server_url":"https://leancloud.cn","security":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/~chaoliu/lib/anime.min.js"></script>
+  <script src="/~chaoliu/lib/velocity/velocity.min.js"></script>
+  <script src="/~chaoliu/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/~chaoliu/js/utils.js"></script>
+
+<script src="/~chaoliu/js/motion.js"></script>
+
+
+<script src="/~chaoliu/js/schemes/muse.js"></script>
+
+
+<script src="/~chaoliu/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://wuliuxiansheng.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.seas.upenn.edu/~chaoliu/2017/01/03/emacs_configuration/";
+    this.page.identifier = "2017/01/03/emacs_configuration/";
+    this.page.title = "Emacs Configuration";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://wuliuxiansheng.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

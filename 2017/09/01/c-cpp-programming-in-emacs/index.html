@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/~chaoliu/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/~chaoliu/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/~chaoliu/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/~chaoliu/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/~chaoliu/css/main.css">
+
+
+<link rel="stylesheet" href="/~chaoliu/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.seas.upenn.edu","root":"/~chaoliu/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction   C&#x2F;C++ is a pretty popular programming language, especially for work requiring high efficiency, such as embedded system and efficient algorithm. I am doing robotics research and somet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++ Programming in Emacs">
+<meta property="og:url" content="http://www.seas.upenn.edu/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/index.html">
+<meta property="og:site_name" content="Chao&#39;s Blog">
+<meta property="og:description" content="Introduction   C&#x2F;C++ is a pretty popular programming language, especially for work requiring high efficiency, such as embedded system and efficient algorithm. I am doing robotics research and somet">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-09-01T04:00:00.000Z">
+<meta property="article:modified_time" content="2018-07-28T04:00:00.000Z">
+<meta property="article:author" content="Chao Liu">
+<meta property="article:tag" content="Emacs">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://www.seas.upenn.edu/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>C/C++ Programming in Emacs | Chao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/~chaoliu/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Chao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/~chaoliu/." rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/~chaoliu/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/~chaoliu/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/~chaoliu/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/~chaoliu/404.html" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/wuliuxiansheng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.seas.upenn.edu/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/~chaoliu/images/avatars/on_the_way.jpg">
+      <meta itemprop="name" content="Chao Liu">
+      <meta itemprop="description" content="Be always on the way.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C/C++ Programming in Emacs
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-09-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-01T00:00:00-04:00">2017-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-07-28 00:00:00" itemprop="dateModified" datetime="2018-07-28T00:00:00-04:00">2018-07-28</time>
+              </span>
+
+          
+            <span id="/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/" class="post-meta-item leancloud_visitors" data-flag-title="C/C++ Programming in Emacs" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/01/c-cpp-programming-in-emacs/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div id="content">
+
+<div id="outline-container-orgd3c12f6" class="outline-2">
+<h2 id="orgd3c12f6">Introduction</h2>
+<div class="outline-text-2" id="text-orgd3c12f6">
+<p>
+C/C++ is a pretty popular programming language, especially for work requiring high efficiency, such as embedded system and efficient algorithm. I am doing robotics research and sometimes I have to program some hardware, like microcontrollers, and I also need to write some ROS code to control the robot or run simulations where C/C++ plays an important role. This post is intended to show how to set up a C/C++ programming environment in Emacs.
+</p>
+
+<a id="more"></a>
+
+<p>
+This configuration contains some basic functions for C/C++ programming: <code>projec management</code>, <code>code completion</code>, <code>code navigation</code> and <code>syntax checking</code>. The integral configuration in this post is from my <a href="https://github.com/wuliuxiansheng/Emacs_Configuration" target="_blank" rel="noopener">Emacs configuration</a> and the overall configuration introduction is <a href="http://www.seas.upenn.edu/~chaoliu/2017/01/03/emacs_configuration/">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbfcbfd3" class="outline-2">
+<h2 id="orgbfcbfd3">Basic Editor Configuration</h2>
+<div class="outline-text-2" id="text-orgbfcbfd3">
+<p>
+This part is already described in another post <a href="http://www.seas.upenn.edu/~chaoliu/2017/09/01/python-programming-in-emacs/">Python Programming in Emacs</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45ffdd7" class="outline-2">
+<h2 id="org45ffdd7">C/C++ Programming</h2>
+<div class="outline-text-2" id="text-org45ffdd7">
+</div>
+<div id="outline-container-org06f1c16" class="outline-3">
+<h3 id="org06f1c16">Project Management</h3>
+<div class="outline-text-3" id="text-org06f1c16">
+<p>
+See <a href="http://www.seas.upenn.edu/~chaoliu/2017/09/01/python-programming-in-emacs/">Project Management</a> section in another post about Python programming.
+</p>
+</div>
+</div>
+<div id="outline-container-org98b6919" class="outline-3">
+<h3 id="org98b6919">Code Completion and Navigation</h3>
+<div class="outline-text-3" id="text-org98b6919">
+<p>
+In order to do code completion for C/C++ programming, a persistent database of references, declarations, definitions and symbol names is required for each C/C++ project. <a href="http://cedet.sourceforge.net/" target="_blank" rel="noopener">CEDET</a> and <a href="http://www.rtags.net" target="_blank" rel="noopener">RTags</a> are used to generate database for different C/C++ project. <code>CEDET</code> is a built-in package since Emacs 23.2 which is developed purely by Elisp, so it is almost a ready-to-go package for most users but it is also not very efficient for big C/C++ projects. <code>RTags</code> is C/C++ indexer with integration for Emacs based on clang and it is faster than CEDET but also more complicated to configure and use.
+</p>
+</div>
+
+<div id="outline-container-orge373217" class="outline-4">
+<h4 id="orge373217">CEDET</h4>
+<div class="outline-text-4" id="text-orge373217">
+<p>
+<code>CEDET</code> is a Collection of Emacs Development Environment Tools written with the end goal of creating an advanced development environment in Emacs <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. Since it is already merged into Emacs distribution since Emacs 23.2, we just need to enable its basic functions by the following code:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">require</span> <span class="quoted">&apos;semantic</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">global-semanticdb-minor-mode</span> <span class="number">1</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">global-semantic-idle-scheduler-mode</span> <span class="number">1</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">semantic-mode</span> <span class="number">1</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">semantic-enable</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+With these lines of code, Semantic mode is enabled, SemanticDB mode is enabled and ensures that the source code is automatically reparsed whenever Emacs is idle. There are also some other customizable options which you can find them <a href="https://www.gnu.org/software/emacs/manual/html_node/semantic/index.html#Top" target="_blank" rel="noopener">Semantic Manual</a>. Semantic mode is not just for C/C++ but also Python, HTML and so on. There are better completion tools for Python and HTML so that I don&apos;t want to enable Semantic for them. Add following code to remove Semantic mode for Python mode and HTML mode:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span> semantic-new-buffer-setup-functions</span><br><span class="line">      <span class="list">(<span class="keyword">remove-if</span> <span class="list">(<span class="keyword">lambda</span> <span class="list">(<span class="keyword">buffer-setup-function</span>)</span></span><br><span class="line">		   <span class="list">(<span class="keyword">member</span> <span class="list">(<span class="keyword">car</span> buffer-setup-function)</span></span><br><span class="line">			   <span class="quoted">&apos;(python-mode html-mode)</span>)</span>)</span></span><br><span class="line">		 semantic-new-buffer-setup-functions)</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;python-mode-hook</span> <span class="quoted">&apos;wisent-python-default-setup</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+Then the corresponding completion backend has to be added to to the backends of <a href="http://company-mode.github.io" target="_blank" rel="noopener">company-mode</a> by the following code:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> company-semantic-setup <span class="list">()</span></span><br><span class="line">  <span class="string">&quot;Configure company-backends for company-semantic and company-yasnippet.&quot;</span></span><br><span class="line">  <span class="list">(<span class="keyword">delete</span> <span class="quoted">&apos;company-irony</span> company-backends)</span></span><br><span class="line">  <span class="list">(<span class="keyword">push</span> <span class="quoted">&apos;(company-semantic <span class="keyword">:with</span> company-yasnippet)</span> company-backends)</span></span><br><span class="line">  )</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+completion backend for yasnippet is also added to the backends of company-mode.
+</p>
+
+<p>
+For a C/C++ project, in order to do code completion in project sense, CEDET has to know the structure of a project, or Semantic will only look for header files in current directory by default. EDE, short for Emacs Development Environment can be used as the interface for managing projects. EDE organizes files into projects, which correspond to directory trees <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>. The project root is the topmost directory of a project. EDE is enabled and project configuration file <code>cc-mode-projects.el</code> in <code>.emacs.d</code>, if existed, is loaded by the following code:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">global-ede-mode</span> <span class="number">1</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">setq</span> ede-custom-file <span class="list">(<span class="keyword">expand-file-name</span> <span class="string">&quot;cc-mode-projects.el&quot;</span> user-emacs-directory)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">when</span> <span class="list">(<span class="keyword">file-exists-p</span> ede-custom-file)</span></span><br><span class="line">  <span class="list">(<span class="keyword">load</span> ede-custom-file)</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+In EDE project configuration file, user can configure a project in this form:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">ede-cpp-root-project</span> <span class="string">&quot;project_name&quot;</span></span><br><span class="line">		      <span class="keyword">:file</span> <span class="string">&quot;dir/to/project/project_root/Makefile&quot;</span></span><br><span class="line">		      <span class="keyword">:include-path</span> <span class="quoted">&apos;(<span class="string">&quot;user_include1&quot;</span></span><br><span class="line">				      <span class="string">&quot;user_include2&quot;</span>)</span></span><br><span class="line">		      <span class="keyword">:system-include-path</span> <span class="quoted">&apos;(<span class="string">&quot;sys_include1&quot;</span></span><br><span class="line">					     <span class="string">&quot;sys_include2&quot;</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+<code>:include-path</code> specifies local directories of the project relative to the project root specified by <code>:file</code> that EDE should search first. <code>:system-include-path</code> specifies system header files path that are not belong to the project.
+</p>
+
+<p>
+Another important part is header files completion. <a href="https://github.com/randomphrase/company-c-headers" target="_blank" rel="noopener">company-c-headers</a> works pretty well with company mode. Add the following code to Emacs configuration to enable this package after installation:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> company-c-headers-setup <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">&apos;company-backends</span> <span class="quoted">&apos;company-c-headers</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+Then configure header file paths for company-c-header in order to do header files completion. Header file paths vary with projects, including system header files and local header files. EDE can return system header files path for company-c-header by the following code:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> ede-object-system-include-path <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">when</span> ede-object</span><br><span class="line">    <span class="list">(<span class="keyword">ede-system-include-path</span> ede-object)</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">setq</span> company-c-headers-path-system <span class="quoted">&apos;ede-object-system-include-path</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+and local header files can be defined in <code>cc-mode-header-custom.el</code> in <code>.emacs.d</code> defining some relative paths which are common to all projects:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span> header-custom-file <span class="list">(<span class="keyword">expand-file-name</span> <span class="string">&quot;cc-mode-header-custom.el&quot;</span> user-emacs-directory)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">when</span> <span class="list">(<span class="keyword">file-exists-p</span> header-custom-file)</span></span><br><span class="line">  <span class="list">(<span class="keyword">load</span> header-custom-file)</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+Finally, loading these two setup functions for C/C++ mode in Emacs by adding hooks:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-c-headers-setup</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-c-headers-setup</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-semantic-setup</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-semantic-setup</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+With these configurations, when opening a <code>.c</code> or <code>.cpp</code> file in Emacs, CEDET will parse the project and <code>.emacs.d/semanticdb/</code> is created accordingly. Then you can do code completion, navigation and some other cool features provided by CEDET. More detailed information can be found in <a href="http://cedet.sourceforge.net" target="_blank" rel="noopener">CEDET project page</a> and <a href="http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html" target="_blank" rel="noopener">this post</a> <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8fca6e4" class="outline-4">
+<h4 id="org8fca6e4">RTags</h4>
+<div class="outline-text-4" id="text-org8fca6e4">
+<p>
+RTags is a client/server application that indexes C/C++ code and keeps a persistent file-based database of references, declarations, definitions, symbolnames etc <sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>. The package is based on clang so that it is faster than CEDET but some external tools are required, including <code>LLVM/Clang</code> (&gt;= 3.3) <code>GCC/Clang</code> (&gt;= 4.7/3.2) and <code>cmake</code> (&gt;= 2.8). In Emacs, load RTags with the following code after installation:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">rtags-enable-standard-keybindings</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">setq</span> rtags-autostart-diagnostics <span class="literal">t</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">rtags-diagnostics</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+<code>rtags-diagnostics</code> is used to start an asynchronous process in a buffer to receive warnings/errors from clang whenever a file gets reindexed. It integrates with <code>flymake</code> to put highlighting on code with warnings and errors <sup><a id="fnr.4.100" class="footref" href="#fn.4">4</a></sup>.
+</p>
+
+<p>
+<code>company-rtags</code> is used for code completion. It can be configured with the following function, including header files completion:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> company-rtags-setup <span class="list">()</span></span><br><span class="line">  <span class="string">&quot;Configure company-backends for company-rtags.&quot;</span></span><br><span class="line">  <span class="list">(<span class="keyword">delete</span> <span class="quoted">&apos;company-semantic</span> company-backends)</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq</span> rtags-completions-enabled <span class="literal">t</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">push</span> <span class="quoted">&apos;(company-rtags <span class="keyword">:with</span> company-yasnippet)</span> company-backends)</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+Finally, loading RTags and these configurations by adding hooks:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">rtags-start-process-unless-running</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-rtags-setup</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-rtags-setup</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+After installing required packages and loading these configurations, before working on C/C++ projects, run <code>rtags-install</code> in Emacs to finish installation. RTags needs to know the compile flags and <code>compile_commands.json</code> can be generated by various tools depending on your project build system. Once the compile flags is generated, run <code>.emacs/path/to/rc -J /path/to/directory/containing/compile_commands.json</code> to tell <code>rdm</code> about the compile flags. Then Emacs is ready for C/C++ programming.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb0553d0" class="outline-3">
+<h3 id="orgb0553d0">Syntax Checking and Formatting</h3>
+<div class="outline-text-3" id="text-orgb0553d0">
+<p>
+RTags can be integrated with <a href="http://www.flycheck.org/en/latest/" target="_blank" rel="noopener">Flycheck</a> by <code>flycheck-rtags</code> package using the following function:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">require</span> <span class="quoted">&apos;flycheck-rtags</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">defun</span> flycheck-rtags-setup <span class="list">()</span></span><br><span class="line">  <span class="string">&quot;Configure flycheck-rtags.&quot;</span></span><br><span class="line">  <span class="list">(<span class="keyword">flycheck-select-checker</span> <span class="quoted">&apos;rtags</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq-local</span> flycheck-highlighting-mode <span class="literal">nil</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq-local</span> flycheck-check-syntax-automatically <span class="literal">nil</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+Then just add hooks for C/C++ code by:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;flycheck-rtags-setup</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;flycheck-rtags-setup</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+<a href="https://github.com/sonatard/clang-format" target="_blank" rel="noopener">clang-format</a> is used to format C/C++ code automatically by the following code:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> clang-format-on-save <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;before-save-hook</span> <span class="quoted">#&apos;clang-format-buffer</span> <span class="literal">nil</span> <span class="quoted">&apos;local</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;clang-format-on-save</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;clang-format-on-save</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+C/C++ codes are formatted automatically when saved. The desired format can be configured by adding clang-format style option (<code>setq clang-format-style-option &quot;option&quot;</code>) or generating <code>clang-format</code> from <a href="https://zed0.co.uk/clang-format-configurator/" target="_blank" rel="noopener">this configurator</a>. For better programming experiences, Emacs cc-mode style should be correspondent with your clang-format. Refer to <a href="https://www.gnu.org/software/emacs/manual/html_node/ccmode/Customizing-Indentation.html#Customizing-Indentation" target="_blank" rel="noopener">Customizing Indentation</a> for more details.
+</p>
+</div>
+</div>
+<div id="outline-container-org3096206" class="outline-3">
+<h3 id="org3096206">Others</h3>
+<div class="outline-text-3" id="text-org3096206">
+</div>
+<div id="outline-container-org3e3f831" class="outline-4">
+<h4 id="org3e3f831">CMake</h4>
+<div class="outline-text-4" id="text-org3e3f831">
+<p>
+<a href="https://cmake.org/" target="_blank" rel="noopener">CMake</a> is a commonly used tool to build C/C++ projects. Install <code>cmake-mode</code> and add the following to enable it:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span> auto-mode-alist</span><br><span class="line">      <span class="list">(<span class="keyword">append</span></span><br><span class="line">       <span class="quoted">&apos;((<span class="string">&quot;CMakeLists\\.txt\\&apos;&quot;</span> . cmake-mode))</span></span><br><span class="line">       <span class="quoted">&apos;((<span class="string">&quot;\\.cmake\\&apos;&quot;</span> . cmake-mode))</span></span><br><span class="line">       auto-mode-alist)</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+And then configure <code>company-cmake</code> by the following:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> company-cmake-setup <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">&apos;company-backends</span> <span class="quoted">&apos;company-cmake</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;cmake-mode-hook</span> <span class="quoted">&apos;company-cmake-setup</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org75add51" class="outline-4">
+<h4 id="org75add51">Commands for Embedded Systems</h4>
+<div class="outline-text-4" id="text-org75add51">
+<p>
+For microcontroller programming, there are three commonly used commands: <code>make</code>, <code>make flash</code> and <code>make clean</code>. <code>make</code> is used to build the project and generate the <code>.hex</code> file, <code>make flash</code> is used to load the <code>.hex</code> file to the microcontroller and <code>make clean</code> is used to clean all generated files. I made three interactive functions for these three commands and map them to three keybindings by the following:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> cc-mode-compile-make <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq</span> compile-command <span class="string">&quot;cd ../ &amp;&amp; make&quot;</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">call-interactively</span> <span class="quoted">&apos;compile</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">defun</span> cc-mode-compile-flash <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq</span> compile-command <span class="string">&quot;cd ../ &amp;&amp; make flash&quot;</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">call-interactively</span> <span class="quoted">&apos;compile</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">defun</span> cc-mode-compile-clean <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq</span> compile-command <span class="string">&quot;cd ../ &amp;&amp; make clean&quot;</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">call-interactively</span> <span class="quoted">&apos;compile</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">defun</span> cc-mode-compile <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">local-set-key</span> <span class="list">(<span class="keyword">kbd</span> <span class="string">&quot;C-x C m&quot;</span>)</span> <span class="quoted">&apos;cc-mode-compile-make</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">local-set-key</span> <span class="list">(<span class="keyword">kbd</span> <span class="string">&quot;C-x C f&quot;</span>)</span> <span class="quoted">&apos;cc-mode-compile-flash</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">local-set-key</span> <span class="list">(<span class="keyword">kbd</span> <span class="string">&quot;C-x C c&quot;</span>)</span> <span class="quoted">&apos;cc-mode-compile-clean</span>)</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;cc-mode-compile</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;cc-mode-compile</span>)</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+Then when editing C/C++ embedded code, user can call these commands more conveniently without opening a shell. The reason why all three commands have <code>cd ..</code> is that, for me, the <code>Makefile</code> is on top of source files and header files.
+</p>
+</div>
+</div>
+<div id="outline-container-org9f36890" class="outline-4">
+<h4 id="org9f36890">Switch between CEDET and RTags</h4>
+<div class="outline-text-4" id="text-org9f36890">
+<p>
+For a project, we use either CEDET or RTags/Irony-Mode. Two interactive functions are made to switch from one to another by the following:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> cedet-enable <span class="list">()</span></span><br><span class="line">  <span class="string">&quot;Start CEDET.&quot;</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-rtags-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-rtags-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;flycheck-rtags-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;flycheck-rtags-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">semantic-enable</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-c-headers-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-c-headers-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-semantic-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-semantic-setup</span>)</span></span><br><span class="line">  )</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">defun</span> irony-enable <span class="list">()</span></span><br><span class="line">  <span class="string">&quot;Start irony mode.&quot;</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">semantic-disable</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-c-headers-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-c-headers-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-semantic-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">remove-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-semantic-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">rtags-start-process-unless-running</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;company-rtags-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;company-rtags-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c++-mode-hook</span> <span class="quoted">&apos;flycheck-rtags-setup</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;c-mode-hook</span> <span class="quoted">&apos;flycheck-rtags-setup</span>)</span></span><br><span class="line">  )</span></span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+CEDET Project Page, <a href="http://cedet.sourceforge.net" target="_blank" rel="noopener">http://cedet.sourceforge.net</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Emacs Development Environment, <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/EDE.html" target="_blank" rel="noopener">https://www.gnu.org/software/emacs/manual/html_node/emacs/EDE.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+A Gentle introduction to CEDET, <a href="http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html" target="_blank" rel="noopener">http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+RTags GitHub Repo, <a href="https://github.com/Andersbakken/rtags" target="_blank" rel="noopener">https://github.com/Andersbakken/rtags</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/~chaoliu/tags/Emacs/" rel="tag"># Emacs</a>
+              <a href="/~chaoliu/tags/C-C/" rel="tag"># C/C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/~chaoliu/2017/09/01/python-programming-in-emacs/" rel="prev" title="Python Programming in Emacs">
+      <i class="fa fa-chevron-left"></i> Python Programming in Emacs
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/~chaoliu/2018/03/12/ros-programming-in-emacs/" rel="next" title="ROS Programming in Emacs">
+      ROS Programming in Emacs <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgd3c12f6"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgbfcbfd3"><span class="nav-number">2.</span> <span class="nav-text">Basic Editor Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org45ffdd7"><span class="nav-number">3.</span> <span class="nav-text">C&#x2F;C++ Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org06f1c16"><span class="nav-number">3.1.</span> <span class="nav-text">Project Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org98b6919"><span class="nav-number">3.2.</span> <span class="nav-text">Code Completion and Navigation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orge373217"><span class="nav-number">3.2.1.</span> <span class="nav-text">CEDET</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org8fca6e4"><span class="nav-number">3.2.2.</span> <span class="nav-text">RTags</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb0553d0"><span class="nav-number">3.3.</span> <span class="nav-text">Syntax Checking and Formatting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org3096206"><span class="nav-number">3.4.</span> <span class="nav-text">Others</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org3e3f831"><span class="nav-number">3.4.1.</span> <span class="nav-text">CMake</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org75add51"><span class="nav-number">3.4.2.</span> <span class="nav-text">Commands for Embedded Systems</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org9f36890"><span class="nav-number">3.4.3.</span> <span class="nav-text">Switch between CEDET and RTags</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#footnotes"><span class="nav-number">4.</span> <span class="nav-text">Footnotes: </span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chao Liu"
+      src="/~chaoliu/images/avatars/on_the_way.jpg">
+  <p class="site-author-name" itemprop="name">Chao Liu</p>
+  <div class="site-description" itemprop="description">Be always on the way.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/~chaoliu/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/~chaoliu/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wuliuxiansheng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wuliuxiansheng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chaoliu@seas.upenn.edu" title="E-Mail → mailto:chaoliu@seas.upenn.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://modlabupenn.org/" title="http:&#x2F;&#x2F;modlabupenn.org" rel="noopener" target="_blank">ModLab</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.grasp.upenn.edu/" title="https:&#x2F;&#x2F;www.grasp.upenn.edu" rel="noopener" target="_blank">GRASP Lab</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.upenn.edu/" title="http:&#x2F;&#x2F;www.upenn.edu" rel="noopener" target="_blank">University of Pennsylvania</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.djtu.edu.cn/" title="http:&#x2F;&#x2F;www.djtu.edu.cn" rel="noopener" target="_blank">Dalian Jiaotong University</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chao Liu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"M06L4PGErlXNY7V8UDbRTTHE-gzGzoHsz","app_key":"vWioykLNdFcAAkYIFpEDgd1N","server_url":"https://leancloud.cn","security":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/~chaoliu/lib/anime.min.js"></script>
+  <script src="/~chaoliu/lib/velocity/velocity.min.js"></script>
+  <script src="/~chaoliu/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/~chaoliu/js/utils.js"></script>
+
+<script src="/~chaoliu/js/motion.js"></script>
+
+
+<script src="/~chaoliu/js/schemes/muse.js"></script>
+
+
+<script src="/~chaoliu/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://wuliuxiansheng.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.seas.upenn.edu/~chaoliu/2017/09/01/c-cpp-programming-in-emacs/";
+    this.page.identifier = "2017/09/01/c-cpp-programming-in-emacs/";
+    this.page.title = "C/C++ Programming in Emacs";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://wuliuxiansheng.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
