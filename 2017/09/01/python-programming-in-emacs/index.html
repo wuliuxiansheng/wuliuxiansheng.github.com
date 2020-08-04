@@ -28,7 +28,7 @@
 <meta property="og:description" content="Introduction   Emacs is a highly extensible text editor and the community keeps growing where you can obtain a lot of support for almost all your needs as a programmer, including Python which is a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-09-01T04:00:00.000Z">
-<meta property="article:modified_time" content="2018-06-23T04:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-04T23:01:49.686Z">
 <meta property="article:author" content="Chao Liu">
 <meta property="article:tag" content="Emacs">
 <meta property="article:tag" content="Python">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-06-23 00:00:00" itemprop="dateModified" datetime="2018-06-23T00:00:00-04:00">2018-06-23</time>
+                <time title="Modified: 2020-08-04 19:01:49" itemprop="dateModified" datetime="2020-08-04T19:01:49-04:00">2020-08-04</time>
               </span>
 
           
@@ -236,9 +236,9 @@
       
         <div id="content">
 
-<div id="outline-container-org2bf561b" class="outline-2">
-<h2 id="org2bf561b">Introduction</h2>
-<div class="outline-text-2" id="text-org2bf561b">
+<div id="outline-container-orgd9f41b2" class="outline-2">
+<h2 id="orgd9f41b2">Introduction</h2>
+<div class="outline-text-2" id="text-orgd9f41b2">
 <p>
 Emacs is a highly extensible text editor and the community keeps growing where you can obtain a lot of support for almost all your needs as a programmer, including Python which is a super prevalent programming language, especially in robotics, machine learning, data mining and so forth. This post is intended to show how to set up a Python programming environment in Emacs.
 </p>
@@ -251,22 +251,22 @@ For a complete Python programming environment, it should contains some basic fun
 </div>
 </div>
 
-<div id="outline-container-org342a4b2" class="outline-2">
-<h2 id="org342a4b2">Basic Editor Configurations</h2>
-<div class="outline-text-2" id="text-org342a4b2">
+<div id="outline-container-orgc232dc2" class="outline-2">
+<h2 id="orgc232dc2">Basic Editor Configurations</h2>
+<div class="outline-text-2" id="text-orgc232dc2">
 <p>
 It is necessary to have Emacs provide some useful command for basic text editing. Some useful packages are listed here and the detailed configurations can be found in my <a href="https://github.com/wuliuxiansheng/Emacs_Configuration" target="_blank" rel="noopener">Emacs configuration</a>. <b>Ivy</b>, <b>Counsel</b> and <b>Swiper</b> are useful tools for minibuffer completion in Emacs. <b>avy</b> is a nice tool for jumping to visible text. <b>iedit</b> allows user to edit one occurrence of some text in a buffer or region and simultaneously have other occurrences edited in the same way with visual feedback as you type <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. <b>fill-column-indicator</b> can graphically indicate the location of the fill column by drawing a thin line which is helpful to keep all lines of code with a consistent length.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6e53959" class="outline-2">
-<h2 id="org6e53959">Python Programming</h2>
-<div class="outline-text-2" id="text-org6e53959">
+<div id="outline-container-orga7160a9" class="outline-2">
+<h2 id="orga7160a9">Python Programming</h2>
+<div class="outline-text-2" id="text-orga7160a9">
 </div>
-<div id="outline-container-org6f104bb" class="outline-3">
-<h3 id="org6f104bb">Python Packages</h3>
-<div class="outline-text-3" id="text-org6f104bb">
+<div id="outline-container-orge5d2692" class="outline-3">
+<h3 id="orge5d2692">Python Packages</h3>
+<div class="outline-text-3" id="text-orge5d2692">
 <p>
 These Python packages are required to have a complete Python programming environment:
 </p>
@@ -279,7 +279,7 @@ These Python packages are required to have a complete Python programming environ
 </ul>
 
 <p>
-<b>IPython</b> is a powerful interactive shell for Python. It has a lot of cool and useful features. From IPython 5.0, new terminal interface is used which is not compatible with Emacs &quot;inferior-shell&quot; feature. Most IPython features have to be disabled in order to use newer version of IPython <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>. Hence IPython 4.2.1 is recommended.
+<b>IPython</b> is a powerful interactive shell for Python. It has a lot of cool and useful features. From IPython 5.0, new terminal interface is used which is not compatible with Emacs "inferior-shell" feature. Most IPython features have to be disabled in order to use newer version of IPython <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>. Hence IPython 4.2.1 is recommended.
 </p>
 
 <p>
@@ -291,53 +291,53 @@ These Python packages are required to have a complete Python programming environ
 </p>
 
 <p>
-<b>Flake8</b> is a wrapper around these tools: PyFlakes, pycodestyle, Ned Batchelder&apos;s McCabe script and it runs all the tools by launching the single <code>flake8</code> command <sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>. It is a nice linting tool to automatically check Python codes.
+<b>Flake8</b> is a wrapper around these tools: PyFlakes, pycodestyle, Ned Batchelder's McCabe script and it runs all the tools by launching the single <code>flake8</code> command <sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>. It is a nice linting tool to automatically check Python codes.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd964092" class="outline-3">
-<h3 id="orgd964092">Emacs Packages and Configurations</h3>
-<div class="outline-text-3" id="text-orgd964092">
+<div id="outline-container-org8e33068" class="outline-3">
+<h3 id="org8e33068">Emacs Packages and Configurations</h3>
+<div class="outline-text-3" id="text-org8e33068">
 <p>
-Emacs already has out-of-box Python support via <code>python-mode</code>. There are a number of Python major modes for Emacs. As well as basic editing these all provide a range of IDE-like features, relying on a mix of native Emacs features and external Emacs/Python packages: <b>python.el</b>, <b>python-mode.el</b> and <b>&apos;love shack&apos; python.el</b>. <b>python.el</b> comes with Emacs 24.2 and up and my configurations are working with this major mode.
+Emacs already has out-of-box Python support via <code>python-mode</code>. There are a number of Python major modes for Emacs. As well as basic editing these all provide a range of IDE-like features, relying on a mix of native Emacs features and external Emacs/Python packages: <b>python.el</b>, <b>python-mode.el</b> and <b>'love shack' python.el</b>. <b>python.el</b> comes with Emacs 24.2 and up and my configurations are working with this major mode.
 </p>
 </div>
 
-<div id="outline-container-org04749fc" class="outline-4">
-<h4 id="org04749fc">Project Management</h4>
-<div class="outline-text-4" id="text-org04749fc">
+<div id="outline-container-org506e5e8" class="outline-4">
+<h4 id="org506e5e8">Project Management</h4>
+<div class="outline-text-4" id="text-org506e5e8">
 <p>
-<b>Projectile</b> is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible) <sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>. This is not just limited to Python programming. See <a href="http://projectile.readthedocs.io/en/latest/" target="_blank" rel="noopener">Projectile Docs</a> for more details. I borrowed some Emacs configurations about Porjectile from <a href="https://github.com/purcell/emacs.d" target="_blank" rel="noopener">Purcell&apos;s emacs.d</a> shown in the following:
+<b>Projectile</b> is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible) <sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>. This is not just limited to Python programming. See <a href="http://projectile.readthedocs.io/en/latest/" target="_blank" rel="noopener">Projectile Docs</a> for more details. I borrowed some Emacs configurations about Porjectile from <a href="https://github.com/purcell/emacs.d" target="_blank" rel="noopener">Purcell's emacs.d</a> shown in the following:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">after-load</span> <span class="quoted">&apos;projectile</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq-default</span></span><br><span class="line">   projectile-mode-line</span><br><span class="line">   <span class="quoted">&apos;(<span class="keyword">:eval</span></span><br><span class="line">     (if (file-remote-p default-directory)</span><br><span class="line">	 <span class="string">&quot; Pr&quot;</span></span><br><span class="line">       (format <span class="string">&quot; Pr[%s]&quot;</span> (projectile-project-name))))</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">after-load</span> <span class="quoted">'projectile</span></span><br><span class="line">  <span class="list">(<span class="keyword">setq-default</span></span><br><span class="line">   projectile-mode-line</span><br><span class="line">   <span class="quoted">'(<span class="keyword">:eval</span></span><br><span class="line">     (if (file-remote-p default-directory)</span><br><span class="line">         <span class="string">" Pr"</span></span><br><span class="line">       (format <span class="string">" Pr[%s]"</span> (projectile-project-name))))</span>)</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 <p>
-Once in a project, <code>Pr[project name]</code> is shown in the minibar rather than a very long mode line. For Windows OS, the default indexing method is <i>native</i> which is much slower, so <code>(setq projectile-indexing-method &apos;alien)</code> should be added to Emacs configuration.
+Once in a project, <code>Pr[project name]</code> is shown in the minibar rather than a very long mode line. For Windows OS, the default indexing method is <i>native</i> which is much slower, so <code>(setq projectile-indexing-method 'alien)</code> should be added to Emacs configuration.
 </p>
 </div>
 </div>
-<div id="outline-container-orga17cbd8" class="outline-4">
-<h4 id="orga17cbd8">Code Completion and Navigation</h4>
-<div class="outline-text-4" id="text-orga17cbd8">
+<div id="outline-container-org54631d5" class="outline-4">
+<h4 id="org54631d5">Code Completion and Navigation</h4>
+<div class="outline-text-4" id="text-org54631d5">
 <p>
 When typing Python code, possible completions should be figured out and provided in a suggestion window. This is done by <b>company-mode</b> and <b>company-jedi</b>. <a href="http://company-mode.github.io" target="_blank" rel="noopener">company-mode</a> is a text completion framework for Emacs which becomes more and more popular than auto-complete (another auto-completion extension for Emacs). <a href="https://github.com/syohex/emacs-company-jedi" target="_blank" rel="noopener">company-jedi</a> is a company-mode completion backend for Python Jedi. We need to add company-jedi to the backends of company-mode by the following code:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> company-jedi-setup <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">&apos;company-backends</span> <span class="quoted">&apos;company-jedi</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;python-mode-hook</span> <span class="quoted">&apos;company-jedi-setup</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> company-jedi-setup <span class="list">()</span></span><br><span class="line">  <span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">'company-backends</span> <span class="quoted">'company-jedi</span>)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">'python-mode-hook</span> <span class="quoted">'company-jedi-setup</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 <p>
 Then we need to configure Jedi in Emacs. The basic configuration is shown in the following:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span> jedi<span class="keyword">:setup-keys</span> <span class="literal">t</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">setq</span> jedi<span class="keyword">:complete-on-dot</span> <span class="literal">t</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;python-mode-hook</span> <span class="quoted">&apos;jedi</span><span class="keyword">:setup</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span> jedi<span class="keyword">:setup-keys</span> <span class="literal">t</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">setq</span> jedi<span class="keyword">:complete-on-dot</span> <span class="literal">t</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">'python-mode-hook</span> <span class="quoted">'jedi</span><span class="keyword">:setup</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 <p>
 When <code>jedi:setup-keys</code> is non-nil, recommended keybinds are set in <code>jedi-mode-map</code> when loading Jedi in Emacs. Setting <code>jedi:complete-on-dot</code> non-nil enables completion to start automatically after inserting a dot. If you want to append some command line arguments to <code>jedi:server-command</code>, use variable <code>jedi:server-args</code>. In my configuration, user can make a file named <code>.emacs.d/jedi-custom.el</code> to customize Jedi configuration and, if this file exists, Emacs will load this file automatically using the following code:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span> jedi-custom-file <span class="list">(<span class="keyword">expand-file-name</span> <span class="string">&quot;jedi-custom.el&quot;</span> user-emacs-directory)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">when</span> <span class="list">(<span class="keyword">file-exists-p</span> jedi-custom-file)</span></span><br><span class="line">  <span class="list">(<span class="keyword">load</span> jedi-custom-file)</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span> jedi-custom-file <span class="list">(<span class="keyword">expand-file-name</span> <span class="string">"jedi-custom.el"</span> user-emacs-directory)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">when</span> <span class="list">(<span class="keyword">file-exists-p</span> jedi-custom-file)</span></span><br><span class="line">  <span class="list">(<span class="keyword">load</span> jedi-custom-file)</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
@@ -345,14 +345,14 @@ With these configurations, you should be able to do Python code completion and n
 </p>
 </div>
 </div>
-<div id="outline-container-orga3c6119" class="outline-4">
-<h4 id="orga3c6119">Interactive Programming</h4>
-<div class="outline-text-4" id="text-orga3c6119">
+<div id="outline-container-orgd4dd01c" class="outline-4">
+<h4 id="orgd4dd01c">Interactive Programming</h4>
+<div class="outline-text-4" id="text-orgd4dd01c">
 <p>
 <b>IPython 4.2.1</b> is used as the Python shell. Add the following configurations to your configuration file:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span></span><br><span class="line"> python-shell-interpreter <span class="string">&quot;ipython&quot;</span></span><br><span class="line"> python-shell-interpreter-args <span class="string">&quot;-i&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">setq</span></span><br><span class="line"> python-shell-interpreter <span class="string">"ipython"</span></span><br><span class="line"> python-shell-interpreter-args <span class="string">"-i"</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 <p>
 Then when opening a Python file and hit <code>C-c C-p</code>, another window will be created which runs an IPython interpreter. Some commonly used key bindings are shown here:
@@ -400,21 +400,21 @@ Then when opening a Python file and hit <code>C-c C-p</code>, another window wil
 </table>
 </div>
 </div>
-<div id="outline-container-org6f44157" class="outline-4">
-<h4 id="org6f44157">Syntax Checking and Formating</h4>
-<div class="outline-text-4" id="text-org6f44157">
+<div id="outline-container-org8fa336d" class="outline-4">
+<h4 id="org8fa336d">Syntax Checking and Formating</h4>
+<div class="outline-text-4" id="text-org8fa336d">
 <p>
 <b>Flycheck</b> is a real-time syntax checking extension for Emacs which already has a number of extensions. It has great support for Python with Flake8. We customize <b>flycheck-display-errors-functions</b> to be <b>flycheck-display-error-message-unless-error-list</b> so that it only show displays errors when the error list is not visible with default key binding <code>C-c ! l</code>. <b>flycheck-color-mode-line</b> package is also included to color the mode line according to the Flycheck state of the current buffer. Detailed configurations are shown:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;after-init-hook</span> <span class="quoted">&apos;global-flycheck-mode</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">setq</span> flycheck-display-errors-function <span class="quoted">#&apos;flycheck-display-error-messages-unless-error-list</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;flycheck-mode-hook</span> <span class="quoted">&apos;flycheck-color-mode-line-mode</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">'after-init-hook</span> <span class="quoted">'global-flycheck-mode</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">setq</span> flycheck-display-errors-function <span class="quoted">#'flycheck-display-error-messages-unless-error-list</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">'flycheck-mode-hook</span> <span class="quoted">'flycheck-color-mode-line-mode</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
-<b>py-autopep8</b> is used in Emacs to work with external tool autopep8 to automatically formatting the current buffer according to Python&apos;s PEP8. Once installed, enable automatically formatting when saving the current buffer contents by
+<b>py-autopep8</b> is used in Emacs to work with external tool autopep8 to automatically formatting the current buffer according to Python's PEP8. Once installed, enable automatically formatting when saving the current buffer contents by
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">require</span> <span class="quoted">&apos;py-autopep8</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">&apos;python-mode-hook</span> <span class="quoted">&apos;py-autopep8-enable-on-save</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">require</span> <span class="quoted">'py-autopep8</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-hook</span> <span class="quoted">'python-mode-hook</span> <span class="quoted">'py-autopep8-enable-on-save</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
@@ -425,27 +425,27 @@ Then when opening a Python file and hit <code>C-c C-p</code>, another window wil
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-Emacs Wiki - Iedit, <a href="https://www.emacswiki.org/emacs/Iedit" target="_blank" rel="noopener">https://www.emacswiki.org/emacs/Iedit</a>
+<a href="https://www.emacswiki.org/emacs/Iedit" target="_blank" rel="noopener">Emacs Wiki - Iedit <i class="fas fa-external-link-alt"></i></a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
-IPython Docs: What&apos;s new in IPython, <a href="http://ipython.readthedocs.io/en/stable/whatsnew/version5.html" target="_blank" rel="noopener">http://ipython.readthedocs.io/en/stable/whatsnew/version5.html</a>
+<a href="http://ipython.readthedocs.io/en/stable/whatsnew/version5.html" target="_blank" rel="noopener">IPython Docs: What's new in IPython <i class="fas fa-external-link-alt"></i></a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
-Python Package Index: autopep8, <a href="https://pypi.python.org/pypi/autopep8" target="_blank" rel="noopener">https://pypi.python.org/pypi/autopep8</a>
+<a href="https://pypi.python.org/pypi/autopep8" target="_blank" rel="noopener">Python Package Index: autopep8 <i class="fas fa-external-link-alt"></i></a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
-Python Package Index: Jedi, <a href="https://pypi.python.org/pypi/jedi/" target="_blank" rel="noopener">https://pypi.python.org/pypi/jedi/</a>
+<a href="https://pypi.python.org/pypi/jedi/" target="_blank" rel="noopener">Python Package Index: Jedi <i class="fas fa-external-link-alt"></i></a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
-Python Package Index: flake8, <a href="https://pypi.python.org/pypi/flake8" target="_blank" rel="noopener">https://pypi.python.org/pypi/flake8</a>
+<a href="https://pypi.python.org/pypi/flake8" target="_blank" rel="noopener">Python Package Index: flake8 <i class="fas fa-external-link-alt"></i></a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <div class="footpara"><p class="footpara">
-Emacs Projectile Docs: Home, <a href="http://projectile.readthedocs.io/en/latest/" target="_blank" rel="noopener">http://projectile.readthedocs.io/en/latest/</a>
+<a href="http://projectile.readthedocs.io/en/latest/" target="_blank" rel="noopener">Emacs Projectile Docs: Home <i class="fas fa-external-link-alt"></i></a>
 </p></div></div>
 
 
@@ -542,7 +542,7 @@ Emacs Projectile Docs: Home, <a href="http://projectile.readthedocs.io/en/latest
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org2bf561b"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org342a4b2"><span class="nav-number">2.</span> <span class="nav-text">Basic Editor Configurations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org6e53959"><span class="nav-number">3.</span> <span class="nav-text">Python Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org6f104bb"><span class="nav-number">3.1.</span> <span class="nav-text">Python Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgd964092"><span class="nav-number">3.2.</span> <span class="nav-text">Emacs Packages and Configurations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org04749fc"><span class="nav-number">3.2.1.</span> <span class="nav-text">Project Management</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orga17cbd8"><span class="nav-number">3.2.2.</span> <span class="nav-text">Code Completion and Navigation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orga3c6119"><span class="nav-number">3.2.3.</span> <span class="nav-text">Interactive Programming</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org6f44157"><span class="nav-number">3.2.4.</span> <span class="nav-text">Syntax Checking and Formating</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#footnotes"><span class="nav-number">4.</span> <span class="nav-text">Footnotes: </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgd9f41b2"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgc232dc2"><span class="nav-number">2.</span> <span class="nav-text">Basic Editor Configurations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orga7160a9"><span class="nav-number">3.</span> <span class="nav-text">Python Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orge5d2692"><span class="nav-number">3.1.</span> <span class="nav-text">Python Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org8e33068"><span class="nav-number">3.2.</span> <span class="nav-text">Emacs Packages and Configurations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org506e5e8"><span class="nav-number">3.2.1.</span> <span class="nav-text">Project Management</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org54631d5"><span class="nav-number">3.2.2.</span> <span class="nav-text">Code Completion and Navigation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgd4dd01c"><span class="nav-number">3.2.3.</span> <span class="nav-text">Interactive Programming</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org8fa336d"><span class="nav-number">3.2.4.</span> <span class="nav-text">Syntax Checking and Formating</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#footnotes"><span class="nav-number">4.</span> <span class="nav-text">Footnotes: </span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -579,6 +579,12 @@ Emacs Projectile Docs: Home, <a href="http://projectile.readthedocs.io/en/latest
       </span>
       <span class="links-of-author-item">
         <a href="https://www.modlabupenn.org/people/chao-liu/" title="ModLab → https:&#x2F;&#x2F;www.modlabupenn.org&#x2F;people&#x2F;chao-liu&#x2F;" rel="noopener" target="_blank"><i class="fas fa-robot fa-fw"></i>ModLab</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://scholar.google.com/citations?user=FSwWMcoAAAAJ&hl=en&inst=15561263346091999511&oi=ao" title="Google Scholar → https:&#x2F;&#x2F;scholar.google.com&#x2F;citations?user&#x3D;FSwWMcoAAAAJ&amp;hl&#x3D;en&amp;inst&#x3D;15561263346091999511&amp;oi&#x3D;ao" rel="noopener" target="_blank"><i class="fas fa-graduation-cap fa-fw"></i>Google Scholar</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.researchgate.net/profile/Chao_Liu119" title="ResearchGate → https:&#x2F;&#x2F;www.researchgate.net&#x2F;profile&#x2F;Chao_Liu119" rel="noopener" target="_blank"><i class="fab fa-researchgate fa-fw"></i>ResearchGate</a>
       </span>
   </div>
 

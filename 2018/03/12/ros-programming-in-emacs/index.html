@@ -28,7 +28,7 @@
 <meta property="og:description" content="Introduction   The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-03-12T04:00:00.000Z">
-<meta property="article:modified_time" content="2018-06-23T04:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-04T23:01:42.799Z">
 <meta property="article:author" content="Chao Liu">
 <meta property="article:tag" content="Robotics">
 <meta property="article:tag" content="ROS">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-06-23 00:00:00" itemprop="dateModified" datetime="2018-06-23T00:00:00-04:00">2018-06-23</time>
+                <time title="Modified: 2020-08-04 19:01:42" itemprop="dateModified" datetime="2020-08-04T19:01:42-04:00">2020-08-04</time>
               </span>
 
           
@@ -236,9 +236,9 @@
       
         <div id="content">
 
-<div id="outline-container-org34c8a71" class="outline-2">
-<h2 id="org34c8a71">Introduction</h2>
-<div class="outline-text-2" id="text-org34c8a71">
+<div id="outline-container-orge02a7bf" class="outline-2">
+<h2 id="orge02a7bf">Introduction</h2>
+<div class="outline-text-2" id="text-orge02a7bf">
 <p>
 The <b>Robot Operating System</b> (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platform <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. In my research experiences, I have to write ROS programs a lot, also use ROS tools very often. This post is intended to show how to do ROS work in Emacs.
 </p>
@@ -251,41 +251,41 @@ This post shows some basic configurations for ROS without covering configuration
 </div>
 </div>
 
-<div id="outline-container-org965036c" class="outline-2">
-<h2 id="org965036c">Emacs Extension for ROS</h2>
-<div class="outline-text-2" id="text-org965036c">
+<div id="outline-container-org8c075b7" class="outline-2">
+<h2 id="org8c075b7">Emacs Extension for ROS</h2>
+<div class="outline-text-2" id="text-org8c075b7">
 </div>
-<div id="outline-container-org5c83a87" class="outline-3">
-<h3 id="org5c83a87">Rosemacs</h3>
-<div class="outline-text-3" id="text-org5c83a87">
+<div id="outline-container-orga1f3179" class="outline-3">
+<h3 id="orga1f3179">Rosemacs</h3>
+<div class="outline-text-3" id="text-orga1f3179">
 <p>
-<a href="http://wiki.ros.org/rosemacs" target="_blank" rel="noopener">Rosemacs</a> is an Emacs package for dealing with ROS. Detailed installation steps and usages can be found <a href="http://wiki.ros.org/rosemacs" target="_blank" rel="noopener">here</a>. Rosemacs provides various commands to simplify working with ROS <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>, such as navigating ROS file systems, tracking topic, running ROS programs, view ROS events and so on. The best thing for me is that I don&apos;t need to open so many terminals any more when interacting with ROS and I can switch to any running process by switching buffer in Emacs which is super convenient to manage ROS processes.
+<a href="http://wiki.ros.org/rosemacs" target="_blank" rel="noopener">Rosemacs</a> is an Emacs package for dealing with ROS. Detailed installation steps and usages can be found <a href="http://wiki.ros.org/rosemacs" target="_blank" rel="noopener">here</a>. Rosemacs provides various commands to simplify working with ROS <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>, such as navigating ROS file systems, tracking topic, running ROS programs, view ROS events and so on. The best thing for me is that I don't need to open so many terminals any more when interacting with ROS and I can switch to any running process by switching buffer in Emacs which is super convenient to manage ROS processes.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org552696b" class="outline-3">
-<h3 id="org552696b">Compiling Commands</h3>
-<div class="outline-text-3" id="text-org552696b">
+<div id="outline-container-orgb9dc89e" class="outline-3">
+<h3 id="orgb9dc89e">Compiling Commands</h3>
+<div class="outline-text-3" id="text-orgb9dc89e">
 <p>
 I made two interactive functions to invoke <code>catkin_make</code> command for ROS programs:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> ros-catkin-make <span class="list">(<span class="keyword">dir</span>)</span></span><br><span class="line">  <span class="string">&quot;Run catkin_make command in DIR.&quot;</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span> <span class="list">(<span class="keyword">list</span> <span class="list">(<span class="keyword">read-directory-name</span> <span class="string">&quot;Directory: &quot;</span>)</span>)</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">let*</span> <span class="list">(<span class="list">(<span class="keyword">default-directory</span> dir)</span></span><br><span class="line">	 <span class="list">(<span class="keyword">compilation-buffer-name-function</span> <span class="list">(<span class="keyword">lambda</span> <span class="list">(<span class="keyword">major-mode-name</span>)</span> <span class="string">&quot;*catkin_make*&quot;</span>)</span>)</span>)</span></span><br><span class="line">    <span class="list">(<span class="keyword">compile</span> <span class="string">&quot;catkin_make&quot;</span>)</span>)</span></span><br><span class="line">  )</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">defun</span> ros-catkin-make-json <span class="list">(<span class="keyword">dir</span>)</span></span><br><span class="line">  <span class="string">&quot;Run catkin_make command in DIR.&quot;</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span> <span class="list">(<span class="keyword">list</span> <span class="list">(<span class="keyword">read-directory-name</span> <span class="string">&quot;Directory: &quot;</span>)</span>)</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">let*</span> <span class="list">(<span class="list">(<span class="keyword">default-directory</span> dir)</span></span><br><span class="line">	 <span class="list">(<span class="keyword">compilation-buffer-name-function</span> <span class="list">(<span class="keyword">lambda</span> <span class="list">(<span class="keyword">major-mode-name</span>)</span> <span class="string">&quot;*catkin_make*&quot;</span>)</span>)</span>)</span></span><br><span class="line">    <span class="list">(<span class="keyword">compile</span> <span class="string">&quot;catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .&quot;</span>)</span>)</span></span><br><span class="line">  )</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">global-set-key</span> <span class="list">(<span class="keyword">kbd</span> <span class="string">&quot;C-x C-r M&quot;</span>)</span> <span class="quoted">&apos;ros-catkin-make</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">global-set-key</span> <span class="list">(<span class="keyword">kbd</span> <span class="string">&quot;C-x C-r C-j&quot;</span>)</span> <span class="quoted">&apos;ros-catkin-make-json</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> ros-catkin-make <span class="list">(<span class="keyword">dir</span>)</span></span><br><span class="line">  <span class="string">"Run catkin_make command in DIR."</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span> <span class="list">(<span class="keyword">list</span> <span class="list">(<span class="keyword">read-directory-name</span> <span class="string">"Directory: "</span>)</span>)</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">let*</span> <span class="list">(<span class="list">(<span class="keyword">default-directory</span> dir)</span></span><br><span class="line">         <span class="list">(<span class="keyword">compilation-buffer-name-function</span> <span class="list">(<span class="keyword">lambda</span> <span class="list">(<span class="keyword">major-mode-name</span>)</span> <span class="string">"*catkin_make*"</span>)</span>)</span>)</span></span><br><span class="line">    <span class="list">(<span class="keyword">compile</span> <span class="string">"catkin_make"</span>)</span>)</span></span><br><span class="line">  )</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">defun</span> ros-catkin-make-json <span class="list">(<span class="keyword">dir</span>)</span></span><br><span class="line">  <span class="string">"Run catkin_make command in DIR."</span></span><br><span class="line">  <span class="list">(<span class="keyword">interactive</span> <span class="list">(<span class="keyword">list</span> <span class="list">(<span class="keyword">read-directory-name</span> <span class="string">"Directory: "</span>)</span>)</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">let*</span> <span class="list">(<span class="list">(<span class="keyword">default-directory</span> dir)</span></span><br><span class="line">         <span class="list">(<span class="keyword">compilation-buffer-name-function</span> <span class="list">(<span class="keyword">lambda</span> <span class="list">(<span class="keyword">major-mode-name</span>)</span> <span class="string">"*catkin_make*"</span>)</span>)</span>)</span></span><br><span class="line">    <span class="list">(<span class="keyword">compile</span> <span class="string">"catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ."</span>)</span>)</span></span><br><span class="line">  )</span></span><br><span class="line"></span><br><span class="line"><span class="list">(<span class="keyword">global-set-key</span> <span class="list">(<span class="keyword">kbd</span> <span class="string">"C-x C-r M"</span>)</span> <span class="quoted">'ros-catkin-make</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">global-set-key</span> <span class="list">(<span class="keyword">kbd</span> <span class="string">"C-x C-r C-j"</span>)</span> <span class="quoted">'ros-catkin-make-json</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 <p>
 <code>ros-catkin-make</code> is used to run <code>catkin_make</code> and <code>ros-catkin-make-json</code> is used to run <code>catkin_make</code> with a compile flag to generate a <code>compile_commands.json</code> file. These two functions are bound with <code>C-x C-r M</code> and <code>C-x C-r C-j</code> respectively.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb78e031" class="outline-3">
-<h3 id="orgb78e031">YAML Mode</h3>
-<div class="outline-text-3" id="text-orgb78e031">
+<div id="outline-container-org84b6fca" class="outline-3">
+<h3 id="org84b6fca">YAML Mode</h3>
+<div class="outline-text-3" id="text-org84b6fca">
 <p>
 <b>YAML</b> file is a commonly used type of file in ROS. <b>yaml-mode</b>, after installation, is configured and loaded with following:
 </p>
 <div class="org-src-container">
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">&apos;auto-mode-alist</span> <span class="quoted">&apos;(<span class="string">&quot;\\.yml$&quot;</span> . yaml-mode)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">&apos;auto-mode-alist</span> <span class="quoted">&apos;(<span class="string">&quot;\\.yaml$&quot;</span> . yaml-mode)</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">'auto-mode-alist</span> <span class="quoted">'(<span class="string">"\\.yml$"</span> . yaml-mode)</span>)</span></span><br><span class="line"><span class="list">(<span class="keyword">add-to-list</span> <span class="quoted">'auto-mode-alist</span> <span class="quoted">'(<span class="string">"\\.yaml$"</span> . yaml-mode)</span>)</span></span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
@@ -393,7 +393,7 @@ Rosemacs, <a href="http://wiki.ros.org/rosemacs" target="_blank" rel="noopener">
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org34c8a71"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org965036c"><span class="nav-number">2.</span> <span class="nav-text">Emacs Extension for ROS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org5c83a87"><span class="nav-number">2.1.</span> <span class="nav-text">Rosemacs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org552696b"><span class="nav-number">2.2.</span> <span class="nav-text">Compiling Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb78e031"><span class="nav-number">2.3.</span> <span class="nav-text">YAML Mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#footnotes"><span class="nav-number">3.</span> <span class="nav-text">Footnotes: </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orge02a7bf"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org8c075b7"><span class="nav-number">2.</span> <span class="nav-text">Emacs Extension for ROS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orga1f3179"><span class="nav-number">2.1.</span> <span class="nav-text">Rosemacs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb9dc89e"><span class="nav-number">2.2.</span> <span class="nav-text">Compiling Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org84b6fca"><span class="nav-number">2.3.</span> <span class="nav-text">YAML Mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#footnotes"><span class="nav-number">3.</span> <span class="nav-text">Footnotes: </span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -430,6 +430,12 @@ Rosemacs, <a href="http://wiki.ros.org/rosemacs" target="_blank" rel="noopener">
       </span>
       <span class="links-of-author-item">
         <a href="https://www.modlabupenn.org/people/chao-liu/" title="ModLab → https:&#x2F;&#x2F;www.modlabupenn.org&#x2F;people&#x2F;chao-liu&#x2F;" rel="noopener" target="_blank"><i class="fas fa-robot fa-fw"></i>ModLab</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://scholar.google.com/citations?user=FSwWMcoAAAAJ&hl=en&inst=15561263346091999511&oi=ao" title="Google Scholar → https:&#x2F;&#x2F;scholar.google.com&#x2F;citations?user&#x3D;FSwWMcoAAAAJ&amp;hl&#x3D;en&amp;inst&#x3D;15561263346091999511&amp;oi&#x3D;ao" rel="noopener" target="_blank"><i class="fas fa-graduation-cap fa-fw"></i>Google Scholar</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.researchgate.net/profile/Chao_Liu119" title="ResearchGate → https:&#x2F;&#x2F;www.researchgate.net&#x2F;profile&#x2F;Chao_Liu119" rel="noopener" target="_blank"><i class="fab fa-researchgate fa-fw"></i>ResearchGate</a>
       </span>
   </div>
 
